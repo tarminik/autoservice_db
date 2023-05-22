@@ -44,3 +44,20 @@ FROM auto.order AS o
 SELECT c.customer_nm, c.total_sales
 FROM auto.customer AS c
 WHERE c.total_sales > (SELECT AVG(total_sales) FROM auto.customer);
+
+-- 9. SELECT для получения заказов, в которых количество деталей превышает 10
+SELECT o.order_id, COUNT(dio.detail_id) AS detail_count
+FROM auto."order" o
+         JOIN auto.details_in_order dio ON o.order_id = dio.order_id
+GROUP BY o.order_id
+HAVING COUNT(dio.detail_id) > 10;
+
+-- 10. SELECT для получения средней цены услуг
+SELECT AVG(price) AS average_price
+FROM auto.service;
+
+-- 11. SELECT для получения списка автомобилей которые имеют открытые заказы
+SELECT c.maker, c.model, c.year
+FROM auto.car c
+         JOIN auto.order o ON c.car_id = o.car_id
+WHERE o.closed_flg = false;
