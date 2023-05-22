@@ -9,7 +9,7 @@
 | phone_no      | номер телефона клиента            | varchar(20)     |                 |
 | tg_username   | имя клиента в телеграмме          | varchar(30)     | NOT NULL        |
 | email         | адрес эл. почты клиента           | varchar(50)     |                 |
-| sail_pct      | скидка клиента                    | integer         |                 |
+| sale_pct      | скидка клиента                    | integer         |                 |
 | total_sales   | общая сумма, потраченная клиентом | real            |                 |
 
 **`booking`**:
